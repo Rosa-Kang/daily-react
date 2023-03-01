@@ -290,3 +290,7 @@ render(){
         </div>
     )
 }
+
+
+// Use Array.map() to Dynamically Render Elements
+const items = this.state.toDoList.map(li => <li>{li}</li>);
