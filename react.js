@@ -263,3 +263,30 @@ class Colorful extends React.Component {
     
   }
 };
+
+
+// Use && for a More Concise Conditional
+// If you write a lot of else if statements to return slightly different UIs, you may repeat code which leaves room for error.
+// Instead, you can use the && logical operator to perform conditional logic in a more concise way.
+class MyComponent extends React.Component {
+render() {
+    return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+         {this.state.display && <h1>Displayed!</h1>}
+         
+       </div>
+    );
+}
+};
+
+// Use a Ternary Expression for Conditional Rendering
+render(){
+    return (
+        <div>
+            { (!this.state.userAge)? buttonOne :
+            (this.state.userAge>=18)? buttonTwo: buttonThree
+            }
+        </div>
+    )
+}
