@@ -200,3 +200,66 @@ class MyComponent extends React.Component {
     );
   }
 }
+
+// Add Event Listeners
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: ''
+    };
+    this.handleEnter = this.handleEnter.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+ 
+ 
+  componentDidMount() {
+      document.addEventListener('keydown', this.handleKeyPress);
+  }
+  componentWillUnmount() {
+document.removeEventListener('keydown', this.handleKeyPress);
+  }
+ 
+ 
+  handleEnter() {
+    this.setState((state) => ({
+      message: state.message + 'You pressed the enter key! '
+    }));
+  }
+  handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      this.handleEnter();
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.message}</h1>
+      </div>
+    );
+  }
+};
+
+// JSX Inline Styles
+// JSX elements use the style attribute, but because of the way JSX is transpiled, you can't set the value to a string. Instead, you set it equal to a JavaScript object. Here's an example:
+<div style={{ color: "yellow", fontSize: 16 }}>Mellow Yellow</div>
+
+//As a rule, any hyphenated style properties are written using camel case in JSX.
+// A large set of styles can be assigned in a style object as a constant to keep your code organized
+const styles = {
+    color: "purple",
+    fontSize: 40,
+    border: "2px solid purple"
+}
+
+
+class Colorful extends React.Component {
+  render() {
+    
+    return (
+      <div style={styles}>Style Me!</div>
+    );
+    
+  }
+};
