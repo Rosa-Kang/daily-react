@@ -294,3 +294,18 @@ render(){
 
 // Use Array.map() to Dynamically Render Elements
 const items = this.state.toDoList.map(li => <li>{li}</li>);
+
+// Give Sibling Elements a Unique Key Attribute
+render() {
+    const usersOnline = this.state.users.filter(user=> user.online);
+    const renderOnline = usersOnline.map((online,i) => <li key={i}>{online.username}</li>)
+    return (
+      <div>
+        <h1>Current Online Users:</h1>
+        <ul>{renderOnline}</ul>
+      </div>
+    );
+}
+  
+// Render React on the Server with renderToString
+ReactDOMServer.renderToString(<App/>)
